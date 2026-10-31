@@ -1,1 +1,1 @@
-Enlase de la plqantilla: https://www.figma.com/design/yG0F39cwC9WMXz80M4wZrG/Travel-Website-Landing-Page--Community-?node-id=108-84&t=odhWbpls090HRhqS-0
+Enlase de la plantilla: https://www.figma.com/design/yG0F39cwC9WMXz80M4wZrG/Travel-Website-Landing-Page--Community-?node-id=108-84&t=odhWbpls090HRhqS-0

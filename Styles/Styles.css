@@ -1,6 +1,6 @@
-/* ==========================================================================
-   Estilos Principales - Agencia de Viajes Jadoo
-   ========================================================================== */
+/* 
+   Estilos Principales - Agencia de Viajes Jadoo 
+*/
 
 /* 1. Configuración Base y Desplazamiento Suave */
 html {
@@ -45,7 +45,7 @@ body {
     animation: float 4s ease-in-out infinite;
 }
 
-/* 4. Estilos de Sombra Personalizados (Respaldo sin Tailwind JS) */
+/*4. Estilos de Sombra Personalizados  */
 .shadow-hero-btn {
     box-shadow: 0px 20px 35px rgba(223, 105, 81, 0.15);
 }

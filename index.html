@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadoo - Agencia de Viajes</title>
+
+    <!-- Tipografías de Google: Volkhov (Títulos) y Poppins (Texto principal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Volkhov:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Iconos FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#DF6951',
+                            yellow: '#F1A501',
+                            dark: '#181E4B',
+                            purple: '#5E6282',
+                            bg: '#FFFBF0',
+                            cardBg: '#FFFFFF',
+                            lightGray: '#84829A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Volkhov', 'serif'],
+                    },
+                    boxShadow: {
+                        'hero-btn': '0px 20px 35px rgba(223, 105, 81, 0.15)',
+                        'card-hover': '0px 40px 60px rgba(0, 0, 0, 0.08)',
+                        'soft': '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
+                        'floating': '0px 20px 30px rgba(0, 0, 0, 0.07)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Desplazamiento suave para los enlaces del menú */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Forma de fondo decorativa superior derecha */
+        .bg-decal {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            width: 50vw;
+            max-width: 700px;
+            pointer-events: none;
+        }
+
+        /* Animación suave para la transición del carrusel de testimonios */
+        .slide-fade {
+            transition: all 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-purple bg-white overflow-x-hidden relative">
+
+    <!-- Vector de Fondo (Blob Naranja Claro Superior) -->
+    <svg class="bg-decal text-[#FFF1DA] opacity-80" viewBox="0 0 666 764" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M495.5 0C607 0 666 65.5 666 177V764L199.5 764C72.5 764 0 671 0 544C0 417 172 374 199.5 247C227 120 384 0 495.5 0Z" fill="currentColor"/>
+    </svg>
+
+    <!-- Encabezado / Navegación principal -->
+    <header class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-8 flex items-center justify-between relative z-50">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-1 text-2xl font-bold text-brand-dark tracking-tight">
+            <span class="text-3xl font-black font-serif text-brand-dark">Jadoo</span>
+            <span class="w-2 h-2 rounded-full bg-brand-orange inline-block mt-2"></span>
+        </a>
+
+        <!-- Menú de Navegación para Computadoras (Desktop) -->
+        <nav class="hidden md:flex items-center gap-8 lg:gap-12 text-sm font-medium text-[#212832]">
+            <a href="#destinations" class="hover:text-brand-orange transition-colors">Destinos</a>
+            <a href="#services" class="hover:text-brand-orange transition-colors">Hoteles</a>
+            <a href="#services" class="hover:text-brand-orange transition-colors">Vuelos</a>
+            <a href="#booking" class="hover:text-brand-orange transition-colors">Reservas</a>
+            <a href="#" class="hover:text-brand-orange transition-colors">Iniciar Sesión</a>
+            <a href="#" class="px-5 py-2.5 border border-brand-dark text-brand-dark rounded-lg hover:bg-brand-dark hover:text-white transition-all shadow-sm">Registrarse</a>
+            
+            <!-- Selector de Idioma -->
+            <div class="relative group cursor-pointer flex items-center gap-1">
+                <span>ES</span>
+                <i class="fa-solid fa-chevron-down text-xs text-gray-600 transition-transform group-hover:rotate-180"></i>
+                <div class="absolute right-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md py-2 w-20 border border-gray-100 mt-1">
+                    <a href="#" class="block px-3 py-1 text-xs hover:bg-gray-50 text-gray-700">ES</a>
+                    <a href="#" class="block px-3 py-1 text-xs hover:bg-gray-50 text-gray-700">EN</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Botón del Menú Hamburguesa para Celulares (Mobile) -->
+        <button id="mobile-menu-btn" aria-label="Abrir Menú" class="md:hidden text-2xl text-brand-dark focus:outline-none">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Menú Desplegable para Celulares -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center text-white gap-8 text-xl font-medium">
+        <button id="close-menu-btn" aria-label="Cerrar Menú" class="absolute top-8 right-6 text-3xl text-white">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#destinations" class="mobile-link">Destinos</a>
+        <a href="#services" class="mobile-link">Hoteles</a>
+        <a href="#services" class="mobile-link">Vuelos</a>
+        <a href="#booking" class="mobile-link">Reservas</a>
+        <a href="#" class="mobile-link">Iniciar Sesión</a>
+        <a href="#" class="px-8 py-3 bg-brand-orange text-white rounded-lg shadow-lg">Registrarse</a>
+    </div>
+
+    <!-- Sección Principal (Hero) -->
+    <section class="max-w-7xl mx-auto px-6 lg:px-12 pt-4 pb-16 lg:pb-28 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 relative">
+        <!-- Columna de Texto Principal -->
+        <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <span class="text-brand-orange font-bold text-sm sm:text-base tracking-widest uppercase mb-4">
+                LOS MEJORES DESTINOS DEL MUNDO
+            </span>
+            
+            <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark leading-[1.15] mb-6">
+                Viaja, <span class="relative inline-block">disfruta<svg class="absolute left-0 -bottom-2 w-full h-3 text-brand-orange -z-10" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q50,0 100,15" stroke="currentColor" stroke-width="4" fill="none"/></svg></span> y vive una vida plena
+            </h1>
+            
+            <p class="text-brand-purple text-base sm:text-lg leading-relaxed max-w-lg mb-8 font-normal">
+                Diseñado para ofrecer las mejores experiencias y descubrimientos en cada rincón del mundo. Encuentra las mejores opciones y reservas de forma fácil y segura.
+            </p>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full justify-center lg:justify-start">
+                <a href="#destinations" class="w-full sm:w-auto px-7 py-4 bg-brand-yellow hover:bg-yellow-500 text-white font-medium rounded-xl shadow-hero-btn transition-all duration-300 text-center hover:scale-105">
+                    Saber más
+                </a>
+                
+                <button onclick="playDemoModal()" class="flex items-center gap-4 group cursor-pointer py-2">
+                    <span class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-play text-sm ml-1"></i>
+                    </span>
+                    <span class="text-brand-purple font-semibold text-base group-hover:text-brand-dark transition-colors">
+                        Ver Demostración
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Columna de Imagen Ilustrativa -->
+        <div class="w-full lg:w-1/2 relative flex justify-center">
+            <div class="relative w-full max-w-lg lg:max-w-none">
+                <!-- Imagen de la viajera -->
+                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80" alt="Viajera con Maleta" class="w-full h-[400px] sm:h-[500px] lg:h-[580px] object-cover rounded-3xl shadow-2xl relative z-10" />
+                
+                <!-- Aviones Decorativos -->
+                <i class="fa-solid fa-paper-plane text-brand-orange text-3xl absolute top-10 left-4 z-20 animate-bounce"></i>
+                <i class="fa-solid fa-paper-plane text-brand-purple opacity-40 text-2xl absolute top-32 right-8 z-20"></i>
+            </div>
+        </div>
+    </section>

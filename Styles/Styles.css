@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Estilos Principales - Agencia de Viajes Jadoo
+   ========================================================================== */
+
+/* 1. Configuración Base y Desplazamiento Suave */
+html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #5E6282;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. Vector Decorativo del Fondo Superior Derecha */
+.bg-decal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 50vw;
+    max-width: 700px;
+    pointer-events: none;
+}
+
+/* 3. Transiciones y Animaciones */
+.slide-fade {
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Animación de flotación suave para la tarjeta interactiva */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* 4. Estilos de Sombra Personalizados (Respaldo sin Tailwind JS) */
+.shadow-hero-btn {
+    box-shadow: 0px 20px 35px rgba(223, 105, 81, 0.15);
+}
+
+.shadow-card-hover {
+    box-shadow: 0px 40px 60px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-soft {
+    box-shadow: 0px 100px 80px rgba(0, 0, 0, 0.02), 
+                0px 64px 46px rgba(0, 0, 0, 0.015), 
+                0px 38px 25px rgba(0, 0, 0, 0.012), 
+                0px 20px 13px rgba(0, 0, 0, 0.01);
+}
+
+.shadow-floating {
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.07);
+}

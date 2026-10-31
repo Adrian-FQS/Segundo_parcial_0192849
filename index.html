@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadoo - Agencia de Viajes</title>
+    <title>Jadoo - Travel Agency</title>
 
-    <!-- Tipografías de Google: Volkhov (Títulos) y Poppins (Texto principal) -->
+    <!-- Google Fonts: Volkhov & Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Volkhov:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Volkhov:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Iconos FontAwesome 6 -->
+    <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Tailwind CSS CDN -->
@@ -25,8 +25,6 @@
                             yellow: '#F1A501',
                             dark: '#181E4B',
                             purple: '#5E6282',
-                            bg: '#FFFBF0',
-                            cardBg: '#FFFFFF',
                             lightGray: '#84829A'
                         }
                     },
@@ -35,7 +33,8 @@
                         serif: ['Volkhov', 'serif'],
                     },
                     boxShadow: {
-                        'hero-btn': '0px 20px 35px rgba(223, 105, 81, 0.15)',
+                        'hero-btn': '0px 20px 35px rgba(241, 165, 1, 0.15)',
+                        'play-btn': '0px 15px 30px rgba(223, 105, 81, 0.3)',
                         'card-hover': '0px 40px 60px rgba(0, 0, 0, 0.08)',
                         'soft': '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64.8148px 46.8519px rgba(0, 0, 0, 0.0151852), 0px 38.5185px 25.4815px rgba(0, 0, 0, 0.0121481), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8.14815px 6.51852px rgba(0, 0, 0, 0.00785185), 0px 1.85185px 3.14815px rgba(0, 0, 0, 0.00481481)',
                         'floating': '0px 20px 30px rgba(0, 0, 0, 0.07)'
@@ -46,124 +45,547 @@
     </script>
 
     <style>
-        /* Desplazamiento suave para los enlaces del menú */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Forma de fondo decorativa superior derecha */
-        .bg-decal {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: -1;
-            width: 50vw;
-            max-width: 700px;
-            pointer-events: none;
-        }
-
-        /* Animación suave para la transición del carrusel de testimonios */
         .slide-fade {
-            transition: all 0.4s ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
 <body class="font-sans text-brand-purple bg-white overflow-x-hidden relative">
 
-    <!-- Vector de Fondo (Blob Naranja Claro Superior) -->
-    <svg class="bg-decal text-[#FFF1DA] opacity-80" viewBox="0 0 666 764" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M495.5 0C607 0 666 65.5 666 177V764L199.5 764C72.5 764 0 671 0 544C0 417 172 374 199.5 247C227 120 384 0 495.5 0Z" fill="currentColor"/>
-    </svg>
+    <!-- Decal Vector Background (Top-Right Yellow/Orange Blob) -->
+    <div class="absolute top-0 right-0 w-[55vw] max-w-[700px] h-full pointer-events-none -z-10 overflow-hidden">
+        <svg class="w-full h-auto text-[#FFF1DA] opacity-80" viewBox="0 0 666 764" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M495.5 0C607 0 666 65.5 666 177V764L199.5 764C72.5 764 0 671 0 544C0 417 172 374 199.5 247C227 120 384 0 495.5 0Z" fill="currentColor"/>
+        </svg>
+    </div>
 
-    <!-- Encabezado / Navegación principal -->
+    <!-- Header / Navigation -->
     <header class="w-full max-w-7xl mx-auto px-6 lg:px-12 py-8 flex items-center justify-between relative z-50">
         <!-- Logo -->
-        <a href="#" class="flex items-center gap-1 text-2xl font-bold text-brand-dark tracking-tight">
-            <span class="text-3xl font-black font-serif text-brand-dark">Jadoo</span>
-            <span class="w-2 h-2 rounded-full bg-brand-orange inline-block mt-2"></span>
+        <a href="#" class="flex items-center text-3xl font-bold text-brand-dark tracking-tight">
+            <span class="font-black font-serif">Jadoo</span>
         </a>
 
-        <!-- Menú de Navegación para Computadoras (Desktop) -->
+        <!-- Desktop Menu -->
         <nav class="hidden md:flex items-center gap-8 lg:gap-12 text-sm font-medium text-[#212832]">
-            <a href="#destinations" class="hover:text-brand-orange transition-colors">Destinos</a>
-            <a href="#services" class="hover:text-brand-orange transition-colors">Hoteles</a>
-            <a href="#services" class="hover:text-brand-orange transition-colors">Vuelos</a>
-            <a href="#booking" class="hover:text-brand-orange transition-colors">Reservas</a>
-            <a href="#" class="hover:text-brand-orange transition-colors">Iniciar Sesión</a>
-            <a href="#" class="px-5 py-2.5 border border-brand-dark text-brand-dark rounded-lg hover:bg-brand-dark hover:text-white transition-all shadow-sm">Registrarse</a>
+            <a href="#destinations" class="hover:text-brand-orange transition-colors">Desitnations</a>
+            <a href="#hotels" class="hover:text-brand-orange transition-colors">Hotels</a>
+            <a href="#flights" class="hover:text-brand-orange transition-colors">Flights</a>
+            <a href="#bookings" class="hover:text-brand-orange transition-colors">Bookings</a>
+            <a href="#login" class="hover:text-brand-orange transition-colors">Login</a>
+            <a href="#signup" class="px-5 py-2.5 border border-brand-dark text-brand-dark rounded-lg hover:bg-brand-dark hover:text-white transition-all shadow-sm">Sign up</a>
             
-            <!-- Selector de Idioma -->
+            <!-- Language Selector -->
             <div class="relative group cursor-pointer flex items-center gap-1">
-                <span>ES</span>
+                <span>EN</span>
                 <i class="fa-solid fa-chevron-down text-xs text-gray-600 transition-transform group-hover:rotate-180"></i>
                 <div class="absolute right-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md py-2 w-20 border border-gray-100 mt-1">
-                    <a href="#" class="block px-3 py-1 text-xs hover:bg-gray-50 text-gray-700">ES</a>
                     <a href="#" class="block px-3 py-1 text-xs hover:bg-gray-50 text-gray-700">EN</a>
+                    <a href="#" class="block px-3 py-1 text-xs hover:bg-gray-50 text-gray-700">ES</a>
                 </div>
             </div>
         </nav>
 
-        <!-- Botón del Menú Hamburguesa para Celulares (Mobile) -->
-        <button id="mobile-menu-btn" aria-label="Abrir Menú" class="md:hidden text-2xl text-brand-dark focus:outline-none">
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" aria-label="Open Menu" class="md:hidden text-2xl text-brand-dark focus:outline-none">
             <i class="fa-solid fa-bars"></i>
         </button>
     </header>
 
-    <!-- Menú Desplegable para Celulares -->
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-brand-dark bg-opacity-95 z-50 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center items-center text-white gap-8 text-xl font-medium">
-        <button id="close-menu-btn" aria-label="Cerrar Menú" class="absolute top-8 right-6 text-3xl text-white">
+        <button id="close-menu-btn" aria-label="Close Menu" class="absolute top-8 right-6 text-3xl text-white">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <a href="#destinations" class="mobile-link">Destinos</a>
-        <a href="#services" class="mobile-link">Hoteles</a>
-        <a href="#services" class="mobile-link">Vuelos</a>
-        <a href="#booking" class="mobile-link">Reservas</a>
-        <a href="#" class="mobile-link">Iniciar Sesión</a>
-        <a href="#" class="px-8 py-3 bg-brand-orange text-white rounded-lg shadow-lg">Registrarse</a>
+        <a href="#destinations" class="mobile-link">Desitnations</a>
+        <a href="#hotels" class="mobile-link">Hotels</a>
+        <a href="#flights" class="mobile-link">Flights</a>
+        <a href="#bookings" class="mobile-link">Bookings</a>
+        <a href="#login" class="mobile-link">Login</a>
+        <a href="#signup" class="px-8 py-3 bg-brand-orange text-white rounded-lg shadow-lg">Sign up</a>
     </div>
 
-    <!-- Sección Principal (Hero) -->
+    <!-- Hero Section -->
     <section class="max-w-7xl mx-auto px-6 lg:px-12 pt-4 pb-16 lg:pb-28 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 relative">
-        <!-- Columna de Texto Principal -->
-        <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <!-- Text Column -->
+        <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
             <span class="text-brand-orange font-bold text-sm sm:text-base tracking-widest uppercase mb-4">
-                LOS MEJORES DESTINOS DEL MUNDO
+                BEST DESTINATIONS AROUND THE WORLD
             </span>
             
             <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark leading-[1.15] mb-6">
-                Viaja, <span class="relative inline-block">disfruta<svg class="absolute left-0 -bottom-2 w-full h-3 text-brand-orange -z-10" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q50,0 100,15" stroke="currentColor" stroke-width="4" fill="none"/></svg></span> y vive una vida plena
+                Travel, <span class="relative inline-block">enjoy<svg class="absolute left-0 -bottom-2 w-full h-3 text-brand-orange -z-10" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0,15 Q50,0 100,15" stroke="currentColor" stroke-width="4" fill="none"/></svg></span> and live a new and full life
             </h1>
             
             <p class="text-brand-purple text-base sm:text-lg leading-relaxed max-w-lg mb-8 font-normal">
-                Diseñado para ofrecer las mejores experiencias y descubrimientos en cada rincón del mundo. Encuentra las mejores opciones y reservas de forma fácil y segura.
+                Built Wicket longer admire do barton vanity itself do in it. Preferred to sportsmen it engrossed listening. Park gate sell they west hard for the.
             </p>
 
-            <!-- Botones de Acción -->
+            <!-- Buttons -->
             <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full justify-center lg:justify-start">
                 <a href="#destinations" class="w-full sm:w-auto px-7 py-4 bg-brand-yellow hover:bg-yellow-500 text-white font-medium rounded-xl shadow-hero-btn transition-all duration-300 text-center hover:scale-105">
-                    Saber más
+                    Find out more
                 </a>
                 
                 <button onclick="playDemoModal()" class="flex items-center gap-4 group cursor-pointer py-2">
-                    <span class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-play text-sm ml-1"></i>
+                    <span class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-brand-orange flex items-center justify-center text-white shadow-play-btn group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
                     </span>
-                    <span class="text-brand-purple font-semibold text-base group-hover:text-brand-dark transition-colors">
-                        Ver Demostración
+                    <span class="text-brand-purple font-medium text-base group-hover:text-brand-dark transition-colors">
+                        Play Demo
                     </span>
                 </button>
             </div>
         </div>
 
-        <!-- Columna de Imagen Ilustrativa -->
-        <div class="w-full lg:w-1/2 relative flex justify-center">
-            <div class="relative w-full max-w-lg lg:max-w-none">
-                <!-- Imagen de la viajera -->
-                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80" alt="Viajera con Maleta" class="w-full h-[400px] sm:h-[500px] lg:h-[580px] object-cover rounded-3xl shadow-2xl relative z-10" />
+        <!-- Graphic Column (Exact Design with Cutout Girl & Airplanes) -->
+        <div class="w-full lg:w-1/2 relative flex justify-center items-center">
+            <div class="relative w-full max-w-lg lg:max-w-xl">
+                <!-- Main Image of Girl Sitting on Suitcase -->
+                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=80" 
+                     alt="Traveler with luggage" 
+                     class="w-full h-auto object-contain relative z-10 drop-shadow-xl" />
                 
-                <!-- Aviones Decorativos -->
-                <i class="fa-solid fa-paper-plane text-brand-orange text-3xl absolute top-10 left-4 z-20 animate-bounce"></i>
-                <i class="fa-solid fa-paper-plane text-brand-purple opacity-40 text-2xl absolute top-32 right-8 z-20"></i>
+                <!-- Decorative Airplane 1 (Top Left) -->
+                <div class="absolute top-10 -left-4 lg:-left-8 z-20 animate-bounce">
+                    <svg class="w-14 h-14 text-sky-400 transform -rotate-12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                    </svg>
+                </div>
+
+                <!-- Decorative Airplane 2 (Right Side) -->
+                <div class="absolute top-28 -right-4 lg:-right-6 z-20">
+                    <svg class="w-14 h-14 text-sky-400 transform rotate-45 opacity-90" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Category / Services Section -->
+    <section id="services" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 relative text-center">
+        <span class="text-brand-purple font-semibold text-sm tracking-widest uppercase">CATEGORY</span>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mt-2 mb-16">
+            We Offer Best Services
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Service 1 -->
+            <div class="group relative bg-white p-8 rounded-3xl transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col items-center border border-transparent hover:border-gray-100">
+                <div class="w-20 h-20 mb-6 flex items-center justify-center relative">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl absolute transform -rotate-12 group-hover:rotate-0 transition-transform"></div>
+                    <i class="fa-solid fa-cloud-sun text-4xl text-brand-orange relative z-10"></i>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-brand-dark mb-3">Calculated Weather</h3>
+                <p class="text-sm text-brand-purple font-medium leading-relaxed">
+                    Built Wicket longer admire do barton vanity itself do in it.
+                </p>
+            </div>
+
+            <!-- Service 2 (Highlighted) -->
+            <div class="group relative bg-white p-8 rounded-3xl transition-all duration-300 shadow-card-hover border border-gray-100 hover:-translate-y-2 flex flex-col items-center">
+                <div class="w-20 h-20 mb-6 flex items-center justify-center relative">
+                    <div class="w-16 h-16 bg-amber-100 rounded-2xl absolute transform rotate-6"></div>
+                    <i class="fa-solid fa-plane-departure text-4xl text-brand-yellow relative z-10"></i>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-brand-dark mb-3">Best Flights</h3>
+                <p class="text-sm text-brand-purple font-medium leading-relaxed">
+                    Engrossed listening. Park gate sell they west hard for the.
+                </p>
+                <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-brand-orange rounded-t-3xl rounded-bl-3xl -z-10 opacity-100"></div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="group relative bg-white p-8 rounded-3xl transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col items-center border border-transparent hover:border-gray-100">
+                <div class="w-20 h-20 mb-6 flex items-center justify-center relative">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl absolute transform -rotate-6 group-hover:rotate-0 transition-transform"></div>
+                    <i class="fa-solid fa-microphone text-4xl text-brand-orange relative z-10"></i>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-brand-dark mb-3">Local Events</h3>
+                <p class="text-sm text-brand-purple font-medium leading-relaxed">
+                    Barton vanity itself do in it. Preferd to sportsmen it engrossed listening.
+                </p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="group relative bg-white p-8 rounded-3xl transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 flex flex-col items-center border border-transparent hover:border-gray-100">
+                <div class="w-20 h-20 mb-6 flex items-center justify-center relative">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl absolute transform rotate-12 group-hover:rotate-0 transition-transform"></div>
+                    <i class="fa-solid fa-gear text-4xl text-blue-500 relative z-10"></i>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-brand-dark mb-3">Customization</h3>
+                <p class="text-sm text-brand-purple font-medium leading-relaxed">
+                    We deliver outsourced aviation services for military customers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Selling / Destinations Section -->
+    <section id="destinations" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
+        <span class="text-brand-purple font-semibold text-sm tracking-widest uppercase">TOP SELLING</span>
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mt-2 mb-16">
+            Top Destinations
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Destination 1: Rome -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 flex flex-col group">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=700&q=80" alt="Rome, Italy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div class="p-6 flex flex-col gap-4">
+                    <div class="flex justify-between items-center text-brand-purple font-medium text-lg">
+                        <span class="text-brand-dark font-semibold">Rome, Italy</span>
+                        <span>$5.42k</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-brand-purple text-sm font-medium">
+                        <i class="fa-solid fa-location-arrow text-brand-dark"></i>
+                        <span>10 Days Trip</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination 2: London -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 flex flex-col group">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=700&q=80" alt="London, UK" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div class="p-6 flex flex-col gap-4">
+                    <div class="flex justify-between items-center text-brand-purple font-medium text-lg">
+                        <span class="text-brand-dark font-semibold">London, UK</span>
+                        <span>$4.2k</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-brand-purple text-sm font-medium">
+                        <i class="fa-solid fa-location-arrow text-brand-dark"></i>
+                        <span>12 Days Trip</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destination 3: Full Europe -->
+            <div class="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2 flex flex-col group">
+                <div class="h-80 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=700&q=80" alt="Full Europe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div class="p-6 flex flex-col gap-4">
+                    <div class="flex justify-between items-center text-brand-purple font-medium text-lg">
+                        <span class="text-brand-dark font-semibold">Full Europe</span>
+                        <span>$15k</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-brand-purple text-sm font-medium">
+                        <i class="fa-solid fa-location-arrow text-brand-dark"></i>
+                        <span>28 Days Trip</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Steps Section -->
+    <section id="bookings" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div class="w-full lg:w-1/2">
+            <span class="text-brand-purple font-semibold text-sm tracking-widest uppercase">EASY AND FAST</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mt-2 mb-10 leading-tight">
+                Book Your Next Trip In 3 Easy Steps
+            </h2>
+
+            <div class="flex flex-col gap-8 max-w-lg">
+                <!-- Step 1 -->
+                <div class="flex items-start gap-5">
+                    <div class="w-12 h-12 rounded-xl bg-yellow-500 text-white flex items-center justify-center shrink-0 mt-1 shadow-md">
+                        <i class="fa-solid fa-cubes text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-brand-purple text-base mb-1">Choose Destination</h3>
+                        <p class="text-sm text-brand-purple leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex items-start gap-5">
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange text-white flex items-center justify-center shrink-0 mt-1 shadow-md">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-brand-purple text-base mb-1">Make Payment</h3>
+                        <p class="text-sm text-brand-purple leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex items-start gap-5">
+                    <div class="w-12 h-12 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0 mt-1 shadow-md">
+                        <i class="fa-solid fa-car text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-brand-purple text-base mb-1">Reach Airport on Selected Date</h3>
+                        <p class="text-sm text-brand-purple leading-relaxed">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Trip Card -->
+        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+            <div class="bg-white p-6 rounded-3xl shadow-card-hover max-w-sm w-full relative">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80" alt="Trip to Greece" class="w-full h-44 object-cover rounded-2xl mb-6" />
+                
+                <h3 class="font-semibold text-lg text-brand-dark mb-2">Trip To Greece</h3>
+                <p class="text-xs text-brand-lightGray font-medium mb-4">14-29 June | by Robbin Joseph</p>
+                
+                <div class="flex items-center gap-4 text-gray-500 mb-6">
+                    <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-colors cursor-pointer">
+                        <i class="fa-solid fa-leaf text-xs"></i>
+                    </span>
+                    <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-colors cursor-pointer">
+                        <i class="fa-solid fa-map text-xs"></i>
+                    </span>
+                    <span class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-orange hover:text-white transition-colors cursor-pointer">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-3 text-xs font-semibold text-brand-lightGray">
+                        <i class="fa-solid fa-building-columns text-base"></i>
+                        <span>24 people going</span>
+                    </div>
+                    <button class="text-red-500 hover:scale-125 transition-transform" aria-label="Favorite">
+                        <i class="fa-regular fa-heart text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Floating Ongoing Card -->
+                <div class="absolute -right-6 bottom-14 bg-white p-4 rounded-2xl shadow-floating flex items-start gap-3 w-64 border border-gray-50 hidden sm:flex">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="User" class="w-10 h-10 rounded-full object-cover" />
+                    <div class="w-full">
+                        <span class="text-xs text-brand-lightGray font-medium">Ongoing</span>
+                        <h4 class="text-sm font-bold text-brand-dark mb-1">Trip to Rome</h4>
+                        <p class="text-xs text-brand-dark font-medium mb-2"><span class="text-brand-orange">40%</span> completed</p>
+                        <div class="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-brand-orange h-full w-[40%] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="w-full lg:w-5/12">
+                <span class="text-brand-purple font-semibold text-sm tracking-widest uppercase">TESTIMONIALS</span>
+                <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mt-2 mb-8 leading-tight">
+                    What People Say About Us.
+                </h2>
+                <div class="flex items-center gap-3">
+                    <button onclick="setTestimonial(0)" id="dot-0" aria-label="Testimonial 1" class="w-3 h-3 rounded-full bg-brand-dark transition-all"></button>
+                    <button onclick="setTestimonial(1)" id="dot-1" aria-label="Testimonial 2" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all"></button>
+                    <button onclick="setTestimonial(2)" id="dot-2" aria-label="Testimonial 3" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all"></button>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-7/12 relative min-h-[260px] flex items-center">
+                <div id="testimonial-card" class="bg-white p-8 sm:p-10 rounded-3xl shadow-soft relative border border-gray-50 w-full max-w-xl slide-fade">
+                    <img id="testi-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Author" class="w-16 h-16 rounded-full object-cover absolute -top-8 left-8 border-4 border-white shadow-md" />
+
+                    <p id="testi-quote" class="text-brand-purple text-base leading-relaxed font-medium mb-8 mt-2">
+                        “On the Windows talk invite me cat relied blew nosy. Netfair end pie neat spot. Or understated eon foil look neat spot.”
+                    </p>
+
+                    <h4 id="testi-author" class="font-bold text-brand-dark text-lg">Mike Taylor</h4>
+                    <p id="testi-location" class="text-xs text-brand-purple font-medium">Lahore, Pakistan</p>
+                </div>
+
+                <div class="hidden sm:flex flex-col gap-4 ml-6">
+                    <button onclick="prevTestimonial()" aria-label="Previous Testimonial" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all">
+                        <i class="fa-solid fa-chevron-up text-xs"></i>
+                    </button>
+                    <button onclick="nextTestimonial()" aria-label="Next Testimonial" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all">
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsors / Brands -->
+        <div class="mt-20 flex flex-wrap items-center justify-between gap-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
+            <span class="font-bold text-2xl tracking-wider text-gray-700">AXON</span>
+            <span class="font-bold text-2xl tracking-tight text-gray-700">JETSTAR</span>
+            <span class="font-bold text-2xl italic text-gray-700">Expedia</span>
+            <span class="font-bold text-2xl text-gray-700">QANTAS</span>
+            <span class="font-bold text-2xl tracking-widest text-gray-700">Alitalia</span>
+        </div>
+    </section>
+
+    <!-- Subscription Section -->
+    <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+        <div class="bg-[#F9F7FE] rounded-3xl rounded-tl-[80px] p-8 sm:p-14 lg:p-20 relative overflow-hidden text-center flex flex-col items-center">
+            <div class="w-14 h-14 bg-gradient-to-tr from-brand-orange to-brand-yellow rounded-full flex items-center justify-center text-white text-xl absolute top-6 right-6 shadow-md">
+                <i class="fa-solid fa-paper-plane"></i>
+            </div>
+
+            <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-brand-dark max-w-3xl leading-snug mb-10 relative z-10">
+                Subscribe to get information, latest news and other interesting offers about Jadoo
+            </h3>
+
+            <form onsubmit="handleSubscribe(event)" class="w-full max-w-xl flex flex-col sm:flex-row items-center gap-4 relative z-10">
+                <div class="relative w-full">
+                    <i class="fa-regular fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                    <input type="email" required placeholder="Your email" class="w-full pl-14 pr-6 py-4 bg-white rounded-xl text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-orange shadow-sm text-sm" />
+                </div>
+                <button type="submit" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#FF946D] to-[#FF7D68] hover:opacity-90 text-white font-semibold rounded-xl transition-all shadow-hero-btn whitespace-nowrap">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+            <div class="lg:col-span-2 flex flex-col items-start gap-4">
+                <a href="#" class="text-3xl font-serif font-black text-brand-dark">Jadoo.</a>
+                <p class="text-sm text-brand-purple font-medium max-w-xs leading-relaxed">
+                    Book your trip in minute, get full Control for much longer.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="font-bold text-brand-dark text-lg mb-1">Company</h4>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">About</a>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Careers</a>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Mobile</a>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="font-bold text-brand-dark text-lg mb-1">Contact</h4>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Help/FAQ</a>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Press</a>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Affilates</a>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <h4 class="font-bold text-brand-dark text-lg mb-1">More</h4>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Airlinefees</a>
+                <a href="#" class="text-sm text-brand-purple hover:text-brand-dark transition-colors">Airline</a>
+
+                <div class="flex items-center gap-3 mt-2">
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white transition-all">
+                        <i class="fa-brands fa-facebook-f text-sm"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white transition-all">
+                        <i class="fa-brands fa-instagram text-sm"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full shadow-md flex items-center justify-center text-brand-dark hover:bg-brand-dark hover:text-white transition-all">
+                        <i class="fa-brands fa-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pt-8 border-t border-gray-100 text-sm text-brand-lightGray">
+            All rights reserved @ jadoo.co
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+        }
+
+        mobileBtn?.addEventListener('click', toggleMenu);
+        closeBtn?.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Testimonials Carousel
+        const testimonials = [
+            {
+                avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+                quote: "“On the Windows talk invite me cat relied blew nosy. Netfair end pie neat spot. Or understated eon foil look neat spot.”",
+                author: "Mike Taylor",
+                location: "Lahore, Pakistan"
+            },
+            {
+                avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+                quote: "“Jadoo made our vacation planning completely seamless. Best agency experience we've ever had!”",
+                author: "Chris Thomas",
+                location: "CEO of Redford"
+            },
+            {
+                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+                quote: "“Great customer service and unbeatable flight prices. Booking with them was quick and totally hassle-free.”",
+                author: "Elena Rostova",
+                location: "Madrid, Spain"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function updateTestimonial() {
+            const card = document.getElementById('testimonial-card');
+            card.style.opacity = '0';
+            
+            setTimeout(() => {
+                const data = testimonials[currentIndex];
+                document.getElementById('testi-avatar').src = data.avatar;
+                document.getElementById('testi-quote').textContent = data.quote;
+                document.getElementById('testi-author').textContent = data.author;
+                document.getElementById('testi-location').textContent = data.location;
+
+                [0, 1, 2].forEach(i => {
+                    const dot = document.getElementById(`dot-${i}`);
+                    if (i === currentIndex) {
+                        dot.className = "w-3 h-3 rounded-full bg-brand-dark transition-all";
+                    } else {
+                        dot.className = "w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all";
+                    }
+                });
+
+                card.style.opacity = '1';
+            }, 150);
+        }
+
+        function setTestimonial(index) {
+            currentIndex = index;
+            updateTestimonial();
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function prevTestimonial() {
+            currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial();
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing!');
+            e.target.reset();
+        }
+
+        function playDemoModal() {
+            alert('Playing Jadoo demo video...');
+        }
+    </script>
+</body>
+</html>

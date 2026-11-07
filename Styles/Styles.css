@@ -1,17 +1,17 @@
 /* ==========================================================
-   UNIDAD 3: CSS3 - ESTILOS BASE JADOO COMPLETO
+   UNIDAD 3: CSS3 - ESTILOS JADOO EXACTOS Y COMPLETOS
    ========================================================== */
 
 :root {
   --color-primary: #df6951;
   --color-yellow: #f1a501;
-  --color-dark: #181e4b;
+  --color-dark: #14183e;
   --color-text: #5e6282;
   --color-beige: #fff1da;
-  --color-lilac: #dfd7f9;
+  --color-lilac: #f9f7fe;
   --color-white: #ffffff;
 
-  --shadow-soft: 0px 100px 80px rgba(0, 0, 0, 0.02), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0143771), 0px 22.3363px 17.869px rgba(0, 0, 0, 0.0119221);
+  --shadow-soft: 0px 100px 80px rgba(0, 0, 0, 0.02);
   --shadow-card: 0px 40px 60px rgba(0, 0, 0, 0.05);
 
   --font-body: 'Poppins', sans-serif;
@@ -61,7 +61,6 @@ button {
   font-family: inherit;
 }
 
-/* Contenedor */
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -262,8 +261,8 @@ button {
 .plane-1 { top: 10%; left: -5%; transform: rotate(-15deg); }
 .plane-2 { top: 25%; right: -2%; transform: rotate(35deg); }
 
-/* Servicios */
-.services, .destinations, .bookings, .testimonials, .packages, .faq, .contact {
+/* Servicios & Destinos */
+.services, .destinations, .bookings, .testimonials, .subscription, .footer {
   padding: 60px 20px;
 }
 
@@ -336,7 +335,6 @@ button {
 
 .service-card.active .card-accent { display: block; }
 
-/* Destinos */
 .destinations-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -386,7 +384,9 @@ button {
   color: var(--color-text);
 }
 
-/* Pasos de Reserva */
+/* ==========================================================
+   SECCIÓN BOOK YOUR NEXT TRIP (CON RESPLANDOR AZUL FLOTANTE)
+   ========================================================== */
 .bookings {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -398,12 +398,12 @@ button {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 32px;
 }
 
 .step-item {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   align-items: flex-start;
 }
 
@@ -415,23 +415,39 @@ button {
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   flex-shrink: 0;
 }
 
 .bg-step-yellow { background-color: #f0bb1f; }
 .bg-step-orange { background-color: #f15a2b; }
-.bg-step-teal { background-color: #006380; }
+.bg-step-teal   { background-color: #006380; }
 
 .bookings-card-wrapper {
   display: flex;
   justify-content: center;
+  position: relative;
+}
+
+/* Resplandor azul detrás de la tarjeta */
+.bookings-card-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  width: 320px;
+  height: 320px;
+  background: #59b1e6;
+  opacity: 0.25;
+  filter: blur(70px);
+  border-radius: 50%;
+  z-index: -1;
 }
 
 .trip-card {
   padding: 20px;
-  border-radius: 24px;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08);
+  border-radius: 26px;
+  box-shadow: 0 40px 60px rgba(0, 0, 0, 0.05);
   background: white;
   max-width: 370px;
   width: 100%;
@@ -442,17 +458,17 @@ button {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 16px;
-  margin-bottom: 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
 }
 
-.trip-title { font-size: 18px; margin-bottom: 6px; }
-.trip-meta { font-size: 14px; color: #84829a; margin-bottom: 16px; }
+.trip-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--color-dark); }
+.trip-meta { font-size: 14px; color: #84829a; margin-bottom: 20px; }
 
 .trip-actions {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .action-btn {
@@ -464,6 +480,7 @@ button {
   align-items: center;
   justify-content: center;
   color: #84829a;
+  font-size: 14px;
 }
 
 .trip-footer {
@@ -474,17 +491,23 @@ button {
   color: #84829a;
 }
 
+.going-count { display: flex; align-items: center; gap: 10px; }
+.btn-like { color: #84829a; font-size: 18px; }
+.btn-like:hover { color: #df6951; }
+
 .floating-card {
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   right: -60px;
   background: white;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
   display: flex;
-  gap: 12px;
-  width: 230px;
+  gap: 14px;
+  width: 240px;
+  align-items: flex-start;
+  z-index: 10;
 }
 
 .floating-card .avatar {
@@ -492,16 +515,147 @@ button {
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .progress-bar {
   width: 100%;
-  height: 6px;
+  height: 5px;
+  border-radius: 10px;
   accent-color: #8a79df;
 }
 
+/* ==========================================================
+   SECCIÓN TESTIMONIALS
+   ========================================================== */
+.testimonials-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.dots-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: var(--color-dark);
+}
+
+.testimonials-card-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Tarjeta Principal */
+.testimonial-card {
+  background: white;
+  padding: 34px;
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.testi-avatar {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testi-quote {
+  font-size: 15px;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.testi-author {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+  font-style: normal;
+  display: block;
+}
+
+.testi-location {
+  font-size: 14px;
+  color: #84829a;
+}
+
+/* Tarjeta secundaria detrás */
+.testimonial-card-behind {
+  position: absolute;
+  bottom: -40px;
+  left: 40px;
+  right: -20px;
+  background: white;
+  border: 2px solid #f3f3f3;
+  padding: 20px 34px;
+  border-radius: 18px;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* Flechas de navegación verticales */
+.arrows-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-left: 30px;
+}
+
+.arrow-btn {
+  color: #bcbdc6;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.arrow-btn:hover {
+  color: var(--color-dark);
+}
+
+/* Marcas */
+.brands-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 100px;
+  gap: 20px;
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.brands-list img {
+  max-height: 45px;
+}
+
 /* Suscripción */
-.subscription { padding: 40px 20px 80px; }
+.subscription { padding: 60px 20px 80px; }
 .sub-box {
   background: #f9f7fe;
   border-radius: 20px;
@@ -572,48 +726,6 @@ button {
   box-shadow: 0 15px 30px rgba(223, 105, 81, 0.2);
 }
 
-/* Tablas y Formularios Adicionales */
-.packages-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.packages-table th, .packages-table td {
-  padding: 14px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-.packages-table thead th {
-  background: var(--color-yellow);
-  color: white;
-}
-
-.contact-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form fieldset {
-  border: 1px solid #eee;
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.contact-form input, .contact-form select, .contact-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: inherit;
-}
-
 /* Footer */
 .footer-grid {
   display: grid;
@@ -651,20 +763,19 @@ button {
   border-top: 1px solid #eee;
 }
 
-/* Responsive */
+/* Media Queries (Responsive) */
 @media (max-width: 900px) {
   .desktop-nav { display: none; }
   .mobile-btn { display: block; }
-  .hero, .bookings { grid-template-columns: 1fr; text-align: center; }
+  .hero, .bookings, .testimonials-wrapper { grid-template-columns: 1fr; text-align: center; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .destinations-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
-  .floating-card { position: static; margin-top: 15px; width: 100%; }
+  .floating-card { position: static; margin: 15px auto 0; width: 100%; }
   .decal-bg { width: 80vw; }
+  .arrows-nav { flex-direction: row; margin-left: 0; justify-content: center; margin-top: 20px; }
 }
 
 @media (max-width: 560px) {
-  .services-grid, .footer-grid { grid-template-columns: 1fr; }
-  .input-group { width: 100%; }
-  .hero-btns { flex-direction: column; }
+  .services-grid, .footer-grid, .brands-list { grid-template-columns: 1fr; }
 }

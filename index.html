@@ -13,7 +13,7 @@
     <!-- FontAwesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Enlace CSS corregido a la carpeta 'Styles' -->
+    <!-- CSS -->
     <link rel="stylesheet" href="Styles/styles.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
         <a href="#" class="logo">Jadoo</a>
 
         <nav class="desktop-nav">
-            <a href="#destinations" class="nav-link">Desitnations</a>
+            <a href="#destinations" class="nav-link">Destinations</a>
             <a href="#hotels" class="nav-link">Hotels</a>
             <a href="#flights" class="nav-link">Flights</a>
             <a href="#bookings" class="nav-link">Bookings</a>
@@ -46,7 +46,7 @@
             </div>
         </nav>
 
-        <button id="mobile-menu-btn" class="mobile-btn"><i class="fa-solid fa-bars"></i></button>
+        <button id="mobile-menu-btn" class="mobile-btn" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
     </header>
 
     <main>
@@ -72,6 +72,7 @@
 
             <div class="hero-graphic">
                 <div class="hero-img-wrapper">
+                    <!-- RUTA CON EL NOMBRE EXACTO DE TU ARCHIVO DE LA FOTO -->
                     <img src="assect/Traveller 1.png" alt="Traveler" class="hero-img" />
                     <div class="plane plane-1">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
@@ -217,7 +218,8 @@
 
             <div class="bookings-card-wrapper">
                 <article class="trip-card">
-                    <img src="assect/Reserva.png" alt="Trip To Greece" class="trip-img" />
+                    <!-- USA LOCACIONES1.PNG O GUARDA RESERVA.PNG DENTRO DE ASSECT -->
+                    <img src="assect/Rectangle 17.jpg" alt="Trip To Greece" class="trip-img" />
                     <h3 class="trip-title">Trip To Greece</h3>
                     <p class="trip-meta">14-29 June | by Robbin Joseph</p>
                     
@@ -232,11 +234,12 @@
                             <i class="fa-solid fa-building-columns"></i>
                             <span>24 people going</span>
                         </div>
-                        <button class="btn-like"><i class="fa-regular fa-heart"></i></button>
+                        <button class="btn-like" aria-label="Me gusta"><i class="fa-regular fa-heart"></i></button>
                     </div>
 
                     <div class="floating-card">
-                        <img src="assect/persona.png" alt="User" class="avatar" />
+                        <!-- ASEGÚRATE DE GUARDAR PERSONA.PNG EN LA CARPETA ASSECT -->
+                        <img src="assect/Mask Group.png" alt="User" class="avatar" />
                         <div>
                             <span style="font-size: 11px; color: #84829a;">Ongoing</span>
                             <h4 style="font-size: 14px;">Trip to Rome</h4>
@@ -246,6 +249,52 @@
                     </div>
                 </article>
             </div>
+        </section>
+
+        <!-- Testimonios -->
+        <section class="testimonials container">
+            <div class="testimonials-wrapper">
+                <div class="testimonials-text">
+                    <span class="section-subtitle">TESTIMONIALS</span>
+                    <h2 class="section-title-left">What People Say About Us.</h2>
+                    <div class="dots-nav">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+
+                <div class="testimonials-card-area">
+                    <div class="testimonial-card-stack">
+                        <blockquote class="testimonial-card">
+                            <img src="assect/Image.png" alt="Mike Taylor" class="testi-avatar" />
+                            <p class="testi-quote">
+                                “On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”
+                            </p>
+                            <cite class="testi-author">Mike Taylor</cite>
+                            <span class="testi-location">Lahore, Pakistan</span>
+                        </blockquote>
+
+                        <div class="testimonial-card-behind">
+                            <cite class="testi-author">Chris Thomas</cite>
+                            <span class="testi-location">CEO of Red Button</span>
+                        </div>
+                    </div>
+
+                    <div class="arrows-nav">
+                        <button class="arrow-btn" aria-label="Testimonio anterior"><i class="fa-solid fa-chevron-up"></i></button>
+                        <button class="arrow-btn" aria-label="Siguiente testimonio"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="brands-list">
+                <li><strong style="font-size:22px; font-family:sans-serif;">axon</strong></li>
+                <li><strong style="font-size:22px; font-family:sans-serif;">Jetstar</strong></li>
+                <li><strong style="font-size:22px; font-family:sans-serif;">Expedia</strong></li>
+                <li><strong style="font-size:22px; font-family:sans-serif;">QANTAS</strong></li>
+                <li><strong style="font-size:22px; font-family:sans-serif;">Alitalia</strong></li>
+            </ul>
         </section>
 
         <!-- Suscripción -->
@@ -290,9 +339,9 @@
                 <a href="#">Airline</a>
                 <a href="#">Low fare tips</a>
                 <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
                 </div>
             </div>
         </div>
@@ -300,5 +349,6 @@
             <small>All rights reserved @ jadoo.co</small>
         </div>
     </footer>
+
 </body>
 </html>
